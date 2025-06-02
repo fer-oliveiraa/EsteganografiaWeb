@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: esteganografia-app
+    env: python
+    plan: free
+    buildCommand: ""
+    startCommand: "python app.py"
