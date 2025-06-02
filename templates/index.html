@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <title>Esteganografia - Codificar/Decodificar</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <h1>Esteganografia</h1>
+
+    {% if error_message %}
+        <div style="color: red; font-weight: bold;">
+            {{ error_message }}
+        </div>
+    {% endif %}
+
+    <section>
+        <h2>Inserir Mensagem na Imagem</h2>
+        <form action="/encode" method="post" enctype="multipart/form-data">
+            <input type="file" name="image" required accept="image/*" />
+            <br />
+            <textarea name="message" placeholder="Digite a mensagem secreta" required></textarea>
+            <br />
+            <button type="submit">Codificar e baixar imagem</button>
+        </form>
+    </section>
+
+    <section>
+        <h2>Ler Mensagem da Imagem</h2>
+        <form action="/decode" method="post" enctype="multipart/form-data">
+            <input type="file" name="image" required accept="image/*" />
+            <br />
+            <button type="submit">Decodificar</button>
+        </form>
+
+        {% if decoded_message %}
+    <div class="mensagem-extraida">
+        <h3>Mensagem extraída:</h3>
+        <p>{{ decoded_message }}</p>
+    </div>
+{% endif %}
+
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul class="flash-mensagens">
+      {% for msg in messages %}
+        <li>{{ msg }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+
+    </section>
+</body>
+</html>
