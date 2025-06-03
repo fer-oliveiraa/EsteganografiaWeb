@@ -13,7 +13,7 @@ Permitir ao usuário:
 - **Backend**: Python + Flask
 - **Processamento de imagem**: Pillow
 - **Frontend**: HTML + CSS
-- **Hospedagem sugerida**: Render
+- **Hospedagem**: Render
 
 ## Acesse a Plataforma
 
